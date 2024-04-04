@@ -29,6 +29,9 @@ return {
 					require("telescope.themes").get_dropdown(),
 				},
 			},
+			defaults = {
+				path_display = { "smart" },
+			},
 		})
 
 		-- Enable telescope extensions, if they are installed

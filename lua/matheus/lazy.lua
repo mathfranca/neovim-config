@@ -9,6 +9,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
+	change_detection = {
+		notify = false,
+	},
 	{ import = "matheus.plugins" },
 	{ import = "matheus.plugins.lsp" },
 }, {
