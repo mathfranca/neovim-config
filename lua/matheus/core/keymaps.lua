@@ -31,3 +31,21 @@ vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current bu
 vim.keymap.set("n", "<Tab>", "<cmd>bn!<CR>", { desc = "Go to next buffer" }) -- go to next buffer
 vim.keymap.set("n", "<S-Tab>", "<cmd>bp!<CR>", { desc = "Go to previous buffer" }) -- go to previous buffer
 vim.keymap.set("n", "<leader>bd", "<cmd>bn!|bd!#<CR>", { desc = "Close current buffer " }) -- close current buffer
+--
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { silent = true, desc = "Next item in quickfix list" })
+vim.keymap.set("n", "[q", "<cmd>cprevious<CR>", { silent = true, desc = "Next item in quickfix list" })
+vim.keymap.set("n", "Q", function()
+	local qf_exists = false
+	for _, win in pairs(vim.fn.getwininfo()) do
+		if win["quickfix"] == 1 then
+			qf_exists = true
+		end
+	end
+	if qf_exists == true then
+		vim.cmd("cclose")
+		return
+	end
+	if not vim.tbl_isempty(vim.fn.getqflist()) then
+		vim.cmd("copen")
+	end
+end, { silent = true, desc = "Open quickfix list" })
