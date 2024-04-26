@@ -5,9 +5,10 @@ return {
 	-- 	vim.cmd.colorscheme("tokyonight-night")
 	-- 	vim.cmd.hi("Comment gui=none")
 	-- end,
-	"aktersnurra/no-clown-fiesta.nvim",
+	"AlexvZyl/nordic.nvim",
+	lazy = false,
 	priority = 1000,
-	init = function()
-		vim.cmd.colorscheme("no-clown-fiesta")
+	config = function()
+		require("nordic").load()
 	end,
 }
