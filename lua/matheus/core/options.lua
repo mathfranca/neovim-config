@@ -43,8 +43,8 @@ local options = {
 	hlsearch = true,
 	writebackup = false,
 	--expandtab = true,
-	shiftwidth = 2,
-	tabstop = 2,
+	shiftwidth = 4,
+	tabstop = 4,
 }
 
 local global = {

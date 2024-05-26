@@ -5,10 +5,11 @@ return {
 	-- 	vim.cmd.colorscheme("tokyonight-night")
 	-- 	vim.cmd.hi("Comment gui=none")
 	-- end,
-	"AlexvZyl/nordic.nvim",
+	-- "AlexvZyl/nordic.nvim",
+	"miikanissi/modus-themes.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("nordic").load()
+		require("modus-themes").setup({})
 	end,
 }
