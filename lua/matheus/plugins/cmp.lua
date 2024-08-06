@@ -63,6 +63,10 @@ return {
 				--  completions whenever it has completion options available.
 				["<C-Space>"] = cmp.mapping.complete({}),
 
+				-- Scrolling Documentation
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-d>"] = cmp.mapping.scroll_docs(-4),
+
 				-- Think of <c-l> as moving to the right of your snippet expansion.
 				--  So if you have a snippet that's like:
 				--  function $name($args)
