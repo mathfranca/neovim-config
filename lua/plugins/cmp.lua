@@ -41,6 +41,7 @@ return {
 					luasnip.lsp_expand(args.body)
 				end,
 			},
+			-- buffer = { enabled = false },
 			completion = { completeopt = "menu,menuone,noinsert" },
 
 			-- For an understanding of why these mappings were
@@ -92,5 +93,20 @@ return {
 				{ name = "path" },
 			},
 		})
+
+		-- local cmp_enabled = false
+		-- vim.api.nvim_create_user_command("ToggleAutoComplete", function()
+		-- 	if cmp_enabled then
+		-- 		require("cmp").setup.buffer({ enabled = false })
+		-- 		cmp_enabled = false
+		-- 		print("completion disabled")
+		-- 	else
+		-- 		require("cmp").setup.buffer({ enabled = true })
+		-- 		cmp_enabled = true
+		-- 		print("completion enabled")
+		-- 	end
+		-- end, {})
+		--
+		-- vim.api.nvim_set_keymap("n", "<C-c>", "<cmd>ToggleAutoComplete<CR>", { noremap = true, silent = true })
 	end,
 }
