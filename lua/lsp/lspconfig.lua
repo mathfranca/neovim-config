@@ -106,7 +106,7 @@ return {
 		require("mason").setup()
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			"stylua", -- Used to format lua code
+			-- "stylua", -- Used to format lua code
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		require("mason-lspconfig").setup({
@@ -120,15 +120,15 @@ return {
 					if server_name ~= "jdtls" then
 						require("lspconfig")[server_name].setup(server)
 					end
-					if server_name == "jdtls" then
-						require("lspconfig").jdtls.setup({
-							handlers = {
-								-- By assigning an empty function, you can remove the notifications
-								-- printed to the cmd
-								["$/progress"] = function(_, result, ctx) end,
-							},
-						})
-					end
+					-- if server_name == "jdtls" then
+					-- 	require("lspconfig").jdtls.setup({
+					-- 		handlers = {
+					-- 			-- By assigning an empty function, you can remove the notifications
+					-- 			-- printed to the cmd
+					-- 			["$/progress"] = function(_, result, ctx) end,
+					-- 		},
+					-- 	})
+					-- end
 				end,
 			},
 		})
