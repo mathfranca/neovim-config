@@ -33,8 +33,8 @@ return {
 		local tabline = require("mini.tabline")
 		tabline.setup({})
 
-		-- local pairs = require("mini.pairs")
-		-- pairs.setup({})
+		local pairs = require("mini.pairs")
+		pairs.setup({})
 
 		local notify = require("mini.notify")
 		notify.setup({})
