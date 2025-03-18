@@ -47,8 +47,9 @@ local capabilities = {
 local config = {
 	flags = {
 		allow_incremental_sync = true,
-	}
+	},
 }
+
 
 config.cmd = {
 	--
@@ -60,7 +61,7 @@ config.cmd = {
 	"-Dosgi.bundles.defaultStartLevel=4",
 	"-Declipse.product=org.eclipse.jdt.ls.core.product",
 	"-Dlog.protocol=true",
-	"-Dlog.level=ALL",
+	"-Dlog.level=ERROR",
 	"-Xmx1g",
 	"-javaagent:" .. lombok_path,
 	"--add-modules=ALL-SYSTEM",
@@ -95,7 +96,7 @@ config.settings = {
 			includeDecompiledSources = true,
 		},
 		format = {
-			enabled = true,
+			enabled = false,
 			settings = {
 				url = vim.fn.stdpath("config") .. "/lang_servers/intellij-java-google-style.xml",
 				profile = "GoogleStyle",
@@ -178,6 +179,7 @@ config.settings = {
 	},
 }
 
+
 config.capabilities = capabilities
 config.on_init = function(client, _)
 	client.notify('workspace/didChangeConfiguration', { settings = config.settings })
@@ -191,5 +193,24 @@ config.init_options = {
 	extendedClientCapabilities = extendedClientCapabilities,
 }
 
+config.handlers = {
+	['language/status'] = function()
+	end
+}
+
 -- Start Server
 require('jdtls').start_or_attach(config)
+
+
+vim.keymap.set("n", "<localleader>tm", "<cmd>lua require'jdtls'.test_nearest_method()<CR>",
+	{ silent = true, desc = "Java: test nearest method" })
+vim.keymap.set("n", "<localleader>tc", "<cmd>lua require'jdtls'.test_class()<CR>",
+	{ silent = true, desc = "Java: test class" })
+vim.keymap.set("n", "<localleader>oi", "<cmd>lua require'jdtls'.organize_imports()<CR>",
+	{ silent = true, desc = "Java: organize imports" })
+vim.keymap.set("n", "<localleader>ee", "<cmd>lua require('jdtls').extract_variable()<CR>",
+	{ silent = true, desc = "Java: extract variable" })
+vim.keymap.set("n", "<localleader>er", "<cmd>lua require('jdtls').extract_constant()<CR>",
+	{ silent = true, desc = "Java: extract constant" })
+vim.keymap.set("n", "<localleader>ef", "<cmd>lua require('jdtls').extract_method(true)<CR>",
+	{ silent = true, desc = "Java: extract method" })

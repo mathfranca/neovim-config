@@ -25,7 +25,7 @@ return {
 
 			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
 			vim.keymap.set("n", "<leader>dg", dap.run_to_cursor, { desc = "Run to cursor" })
-			vim.keymap.set("n", "<leader>d?", function()
+			vim.keymap.set("n", "<leader>dh", function()
 				require("dapui").eval(nil, { enter = true })
 			end, { desc = "Eval var under cursor" })
 			vim.keymap.set("n", "<leader>dt", ui.toggle, { noremap = true, silent = true, desc = "Toggle Dap-ui" })
@@ -33,9 +33,10 @@ return {
 				"n",
 				"<leader>dr",
 				":lua require('dapui').open({reset =true})<CR>",
-				{ noremap = true, silent = true, desc = "Toggle Dap-ui" }
+				{ noremap = true, silent = true, desc = "Reset DapUI frames" }
 			)
 			vim.keymap.set("n", "<leader>dq", dap.terminate, { desc = "Debug terminate session" })
+			vim.keymap.set("n", "<leader>dR", "<cmd>:DapToggleRepl<CR>", { desc = "Toggle REPL" })
 
 			vim.keymap.set("n", "<F1>", dap.continue, { desc = "Debug continue" })
 			vim.keymap.set("n", "<F2>", dap.step_into, { desc = "Debug step into" })

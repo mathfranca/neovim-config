@@ -36,9 +36,20 @@ return {
 		local pairs = require("mini.pairs")
 		pairs.setup({})
 
-		local notify = require("mini.notify")
-		notify.setup({})
-
+		-- local notify = require("mini.notify")
+		-- notify.setup({
+		-- 	lsp_progress = {
+		-- 		-- Whether to enable showing
+		-- 		enable = false,
+		--
+		-- 		-- Notification level
+		-- 		level = 'ERROR', -- didn't make it work
+		--
+		-- 		-- Duration (in ms) of how long last message should be shown
+		-- 		duration_last = 1000,
+		-- 	},
+		-- })
+		--
 		local move = require("mini.move")
 		move.setup({})
 
