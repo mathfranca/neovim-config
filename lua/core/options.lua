@@ -15,6 +15,8 @@ local options = {
 	writebackup = false,
 	shiftwidth = 4,
 	tabstop = 4,
+	pumheight = 10,
+	winborder = 'single',
 }
 
 local global = {
