@@ -17,6 +17,7 @@ return {
 				vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, {})
 				local map = function(keys, func, desc)
 					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+					vim.keymap.set("v", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
 				-- Jump to the definition of the word under your cursor.

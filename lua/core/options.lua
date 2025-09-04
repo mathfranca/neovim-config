@@ -1,3 +1,5 @@
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+
 local options = {
 	number = true,
 	relativenumber = true,
@@ -32,3 +34,6 @@ end
 for name, value in pairs(global) do
 	vim.g[name] = value
 end
+
+vim.diagnostic.config({ virtual_text = true })
+-- vim.diagnostic.config({ virtual_lines = true })
