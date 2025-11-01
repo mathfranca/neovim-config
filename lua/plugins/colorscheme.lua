@@ -15,18 +15,19 @@ return {
 		-- "killitar/obscure.nvim",
 		-- "wtfox/jellybeans.nvim",
 		"armannikoyan/rusty",
+		-- "p00f/alabaster.nvim",
 		-- "blazkowolf/gruber-darker.nvim",
 		-- "slugbyte/lackluster.nvim",
 		-- "rebelot/kanagawa.nvim",
 		-- "nyoom-engineering/oxocarbon.nvim",
-		dependencies = {
-			"rktjmp/lush.nvim",
-		},
+		-- dependencies = {
+		-- 	"rktjmp/lush.nvim",
+		-- },
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme "rusty"
 			vim.cmd 'set termguicolors'
+			vim.cmd.colorscheme "rusty"
 		end
 	},
 	-- {

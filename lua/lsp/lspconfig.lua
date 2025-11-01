@@ -51,7 +51,7 @@ return {
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.
-				map("<leader>la", vim.lsp.buf.code_action, "Code Action")
+				-- map("<leader>la", vim.lsp.buf.code_action, "Code Action") -- code actions overrides
 
 				-- Opens a popup that displays documentation about the word under your cursor
 				--  See `:help K` for why this keymap

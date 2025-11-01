@@ -53,3 +53,6 @@ vim.keymap.set("n", "Q", function()
 		vim.cmd("copen")
 	end
 end, { silent = true, desc = "Open quickfix list" })
+
+vim.keymap.set({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true }) -- replace k with gk but keep realtive lines logic for jumps
+vim.keymap.set({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true }) -- replace j with gj but keep relative lines logic for jumps

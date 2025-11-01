@@ -34,7 +34,7 @@ return {
 		tabline.setup({})
 
 		local pairs = require("mini.pairs")
-		pairs.setup({})
+		-- pairs.setup({})
 
 		-- local notify = require("mini.notify")
 		-- notify.setup({

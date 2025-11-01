@@ -15,13 +15,13 @@ return {
 				return "make install_jsregexp"
 			end)(),
 		},
-		"saadparwaiz1/cmp_luasnip",
 
 		-- Adds other completion capabilities.
 		--  nvim-cmp does not ship with all sources by default. They are split
 		--  into multiple repos for maintenance purposes.
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
+		"saadparwaiz1/cmp_luasnip",
 
 		-- If you want to add a bunch of pre-configured snippets,
 		--    you can use this plugin to help you. It even has snippets
@@ -88,7 +88,12 @@ return {
 				end, { "i", "s" }),
 			}),
 			sources = {
-				{ name = "nvim_lsp" },
+				{
+					name = "nvim_lsp",
+					entry_filter = function(entry, ctx)
+						return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
+					end
+				},
 				{ name = "luasnip" },
 				{ name = "path" },
 			},
