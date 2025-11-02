@@ -13,15 +13,15 @@ local workspace_dir = home .. "/.cache/jdtls/workspace/" .. project_name
 local path_to_mason_packages = home .. "/.local/share/nvim/mason/packages"
 -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
 
-local path_to_jdtls = "/home/meyng/.jdtls"
+local path_to_jdtls = home .. "/.jdtls"
 local path_to_jdebug = path_to_mason_packages .. "/java-debug-adapter"
 local path_to_jtest = path_to_mason_packages .. "/java-test"
 
 local path_to_config = path_to_jdtls .. "/config_linux"
-local lombok_path = "/home/meyng/.local/share/java/lombok/lombok.jar"
+local lombok_path = home .. "/.local/share/java/lombok/lombok.jar"
 
 -- 💀
-local path_to_jar = "/home/meyng/.jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
+local path_to_jar = vim.fn.glob(path_to_jdtls .. "/plugins/org.eclipse.equinox.launcher_*.jar", true)
 -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
 
 local bundles = {
@@ -159,21 +159,21 @@ config.settings = {
 			runtimes = {
 				{
 					name = "JavaSE-17",
-					path = "/usr/lib/jvm/java-17-openjdk-amd64/"
+					path = "/usr/lib/jvm/java-17"
 				},
 				{
 					name = "JavaSE-11",
-					path = "/usr/lib/jvm/java-11-openjdk-amd64"
+					path = "/usr/lib/jvm/java-11"
 				},
 				{
 					name = "JavaSE-21",
-					path = "/usr/lib/jvm/java-21-openjdk-amd64"
+					path = "/usr/lib/jvm/java-21"
 				},
 			}
 		},
 		-- project = {
 		-- 	referencedLibraries = {
-		-- 		"**/lib/*.jar",
+		-- 		"**/lib/*.jar"
 		-- 	},
 		-- },
 	},
