@@ -13,7 +13,9 @@ return {
 			local dap = require("dap")
 			local ui = require("dapui")
 
-			require("dapui").setup()
+			require("dapui").setup({
+				expand_lines = false,
+			})
 			require("dap-go").setup()
 
 			require("mason-nvim-dap").setup({
@@ -64,6 +66,30 @@ return {
 					type = "java",
 					request = "launch",
 					name = "Launch Java Program",
+				},
+			}
+
+			-- Zig
+			-- configure codelldb adapter
+			dap.adapters.codelldb = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					command = "codelldb",
+					args = { "--port", "${port}" },
+				},
+			}
+
+			-- setup a debugger config for zig projects
+			dap.configurations.zig = {
+				{
+					name = 'Launch',
+					type = 'codelldb',
+					request = 'launch',
+					program = '${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}',
+					cwd = '${workspaceFolder}',
+					stopOnEntry = false,
+					args = {},
 				},
 			}
 		end,

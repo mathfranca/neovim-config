@@ -28,6 +28,7 @@ return {
 		config = function()
 			vim.cmd 'set termguicolors'
 			vim.cmd.colorscheme "rusty"
+			vim.cmd [[highlight CursorLine cterm=bold ctermbg=235 guibg=#252930]]
 		end
 	},
 	-- {
