@@ -6,9 +6,10 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 
 -- Diagnostics
-vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = 1 }) end,
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = 1, float = true, wrap = true }) end,
 	{ desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = -1, float = true, wrap = true }) end,
+	{ desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
 
