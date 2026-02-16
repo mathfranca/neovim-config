@@ -44,6 +44,12 @@ return {
 			-- buffer = { enabled = false },
 			completion = { completeopt = "menu,menuone,noinsert" },
 
+			view = {
+				docs = {
+					auto_open = false
+				}
+			},
+
 			-- For an understanding of why these mappings were
 			-- chosen, you will need to read `:help ins-completion`
 			--
@@ -62,11 +68,18 @@ return {
 				-- Manually trigger a completion from nvim-cmp.
 				--  Generally you don't need this, because nvim-cmp will display
 				--  completions whenever it has completion options available.
-				["<C-Space>"] = cmp.mapping.complete({}),
+				["<C-Space>"] = cmp.mapping.complete(),
+				["<C-S-Space>"] = cmp.mapping(function()
+					if cmp.visible_docs() then
+						cmp.close_docs()
+					else
+						cmp.open_docs()
+					end
+				end),
 
 				-- Scrolling Documentation
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-d>"] = cmp.mapping.scroll_docs(-4),
+				["<C-S-F>"] = cmp.mapping.scroll_docs(4),
+				["<C-S-D>"] = cmp.mapping.scroll_docs(-4),
 
 				-- Think of <c-l> as moving to the right of your snippet expansion.
 				--  So if you have a snippet that's like:
