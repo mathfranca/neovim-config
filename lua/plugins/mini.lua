@@ -1,7 +1,3 @@
-local function get_relative_filename()
-	return vim.fn.expand("%:.")
-end
-
 return {
 	"echasnovski/mini.nvim",
 	enabled = true,
@@ -66,31 +62,37 @@ return {
 		-- local tabline = require("mini.tabline")
 		-- tabline.setup({})
 
-		local pairs = require("mini.pairs")
+		-- local pairs = require("mini.pairs")
 		-- pairs.setup({})
 
-		-- local notify = require("mini.notify")
+		-- local notify = require("mini.notify") -- conflicts with the notify from lsp.
 		-- notify.setup({
 		-- 	lsp_progress = {
 		-- 		-- Whether to enable showing
-		-- 		enable = false,
+		-- 		enable = true,
 		--
 		-- 		-- Notification level
-		-- 		level = 'ERROR', -- didn't make it work
+		-- 		level = 'ERROR', -- couldn't make it work
 		--
 		-- 		-- Duration (in ms) of how long last message should be shown
-		-- 		duration_last = 1000,
+		-- 		duration_last = 2500,
 		-- 	},
 		-- })
-		--
-		local move = require("mini.move")
+
+		local move = require("mini.move") -- move text with ALT
 		move.setup({})
 
 		local misc = require("mini.misc")
 		misc.setup({})
 
+		local ai = require("mini.ai") -- enhances a and i operators
+		ai.setup({})
+
 		local cursorword = require("mini.cursorword")
 		cursorword.setup({})
+
+		local surround = require("mini.surround") -- like the tpope one, but better
+		surround.setup({})
 
 		local open_at_buf_file = function()
 			files.open(vim.api.nvim_buf_get_name(0))
@@ -98,6 +100,6 @@ return {
 		end
 
 		vim.keymap.set("n", "<leader>ff", files.open, { desc = "Open file explorer" })
-		vim.keymap.set("n", "<leader>ef", open_at_buf_file, { desc = "Open file explorer at current file" })
+		vim.keymap.set("n", "<leader>fe", open_at_buf_file, { desc = "Open file explorer at current file" })
 	end,
 }

@@ -1,15 +1,16 @@
-vim.keymap.set("n", "<localleader><localleader>x", "<cmd>source %<CR>")
-vim.keymap.set("n", "<localleader>x", ":.lua<CR>")
-vim.keymap.set("v", "<localleader>x", ":lua<CR>")
+vim.keymap.set("n", "<localleader><localleader>x", "<cmd>source %<CR>", { desc = "source whole file" })
+vim.keymap.set("n", "<localleader>x", ":.lua<CR>", { desc = "execute current line as lua" })
+vim.keymap.set("v", "<localleader>x", ":lua<CR>", { desc = "execute selection as lua" })
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 
 -- Diagnostics
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = 1 }) end,
+	{ desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
 
 -- Exit terminal mode
 vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -20,12 +21,11 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-vim.keymap.set("n", "<leader>vv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically
-vim.keymap.set("n", "<leader>vh", "<C-w>s", { desc = "Split window horizontally" })   -- split window horizontally
-vim.keymap.set("n", "<leader>ve", "<C-w>=", { desc = "Make splits equal size" })      -- make split windows equal width & height
-vim.keymap.set("n", "<leader>vc", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+vim.keymap.set("n", "<leader>vv", "<C-w>v", { desc = "Split window vertically" })                   -- split window vertically
+vim.keymap.set("n", "<leader>vh", "<C-w>s", { desc = "Split window horizontally" })                 -- split window horizontally
+vim.keymap.set("n", "<leader>ve", "<C-w>=", { desc = "Make splits equal size" })                    -- make split windows equal width & height
+vim.keymap.set("n", "<leader>vc", "<cmd>close<CR>", { desc = "Close current split" })               -- close current split window
 -- --
-vim.keymap.set("n", "<leader>t", "", { desc = "Tab commands" })
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })                     -- open new tab
 vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close current tab" })              -- close current tab
 vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })                     --  go to next tab
