@@ -18,7 +18,6 @@ local options = {
 	shiftwidth = 4,
 	tabstop = 4,
 	pumheight = 10,
-	winborder = 'single',
 }
 
 local global = {
@@ -36,4 +35,5 @@ for name, value in pairs(global) do
 end
 
 vim.diagnostic.config({ virtual_text = true })
+vim.o.winborder = 'single'
 -- vim.diagnostic.config({ virtual_lines = true })
