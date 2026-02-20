@@ -43,6 +43,12 @@ return {
 			},
 			-- buffer = { enabled = false },
 			completion = { completeopt = "menu,menuone,noinsert" },
+			formatting = {
+				format = function(entry, vim_item)
+					vim_item.menu = entry:get_completion_item().detail -- show signature detail
+					return vim_item
+				end
+			},
 
 			view = {
 				docs = {
@@ -68,14 +74,19 @@ return {
 				-- Manually trigger a completion from nvim-cmp.
 				--  Generally you don't need this, because nvim-cmp will display
 				--  completions whenever it has completion options available.
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-S-Space>"] = cmp.mapping(function()
-					if cmp.visible_docs() then
+				["<C-Space>"] = cmp.mapping(function()
+					if not cmp.visible() then
+						-- 1. Completion not visible → open completion
+						cmp.complete()
+					elseif cmp.visible_docs() then
+						-- 3. Docs visible → close docs
 						cmp.close_docs()
 					else
+						-- 2. Completion visible, docs not → open docs
 						cmp.open_docs()
 					end
-				end),
+				end, { "i", "c" }),
+
 
 				-- Scrolling Documentation
 				["<C-S-F>"] = cmp.mapping.scroll_docs(4),
