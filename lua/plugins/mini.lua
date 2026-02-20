@@ -62,8 +62,16 @@ return {
 		-- local tabline = require("mini.tabline")
 		-- tabline.setup({})
 
-		-- local pairs = require("mini.pairs")
-		-- pairs.setup({})
+		local pairs = require("mini.pairs")
+		pairs.setup({})
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "rust",
+			group = vim.api.nvim_create_augroup("Rust_disable_single_quote", { clear = true }),
+			callback = function()
+				pairs.unmap("i", "'", "''")
+			end,
+			desc = "Disable single quote Rust",
+		})
 
 		-- local notify = require("mini.notify") -- conflicts with the notify from lsp.
 		-- notify.setup({
