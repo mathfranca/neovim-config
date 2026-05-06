@@ -1,5 +1,5 @@
 return {
-	"echasnovski/mini.nvim",
+	"nvim-mini/mini.nvim",
 	enabled = true,
 	config = function()
 		local MiniStatusline = require("mini.statusline")
@@ -55,6 +55,12 @@ return {
 				trim_right = ">",
 			},
 		})
+		vim.keymap.set("n", "<leader>ff", files.open, { desc = "Open file explorer" })
+		local open_at_buf_file = function()
+			files.open(vim.api.nvim_buf_get_name(0))
+			files.reveal_cwd()
+		end
+		vim.keymap.set("n", "<leader>fe", open_at_buf_file, { desc = "Open file explorer at current file" })
 
 		local icons = require("mini.icons")
 		icons.setup({})
@@ -101,13 +107,5 @@ return {
 
 		local surround = require("mini.surround") -- like the tpope one, but better
 		surround.setup({})
-
-		local open_at_buf_file = function()
-			files.open(vim.api.nvim_buf_get_name(0))
-			files.reveal_cwd()
-		end
-
-		vim.keymap.set("n", "<leader>ff", files.open, { desc = "Open file explorer" })
-		vim.keymap.set("n", "<leader>fe", open_at_buf_file, { desc = "Open file explorer at current file" })
 	end,
 }

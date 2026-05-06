@@ -27,17 +27,6 @@ return {
 		local find_files = builtin.find_files
 
 
-		vim.keymap.set("n", "<leader>s", "", { desc = "Search functions" })
-
-		vim.keymap.set("n", "<leader>sf", find_files, { desc = "Search files" })
-
-		vim.keymap.set("n", "<leader>sn", function()
-			local opts = require("telescope.themes").get_ivy({
-				cwd = vim.fn.stdpath("config")
-			})
-			builtin.find_files(opts)
-		end, { desc = "Search files in neovim config" })
-
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Search for current opened buffers" })
 
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Search Keymaps" })

@@ -5,7 +5,7 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-
+		"ibhagwan/fzf-lua",
 		-- Useful status updates for LSP.
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 		{ "j-hui/fidget.nvim", opts = {} },
@@ -20,34 +20,43 @@ return {
 					vim.keymap.set("v", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
+				local fzf_lua = require("fzf-lua")
+
 				-- Jump to the definition of the word under your cursor.
 				--  This is where a variable was first declared, or where a function is defined, etc.
 				--  To jump back, press <C-T>.
-				map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
+				map("gd", fzf_lua.lsp_definitions, "Goto Definition")
 
 				-- Find references for the word under your cursor.
-				map("gr", require("telescope.builtin").lsp_references, "Goto References")
+				-- map("gr", require("telescope.builtin").lsp_references, "Goto References")
+				map("gr", function() fzf_lua.lsp_references({ ignore_current_line = true }) end, "Goto References")
 
 				-- Jump to the implementation of the word under your cursor.
 				--  Useful when your language has ways of declaring types without an actual implementation.
-				map("gI", require("telescope.builtin").lsp_implementations, "Goto Implementation")
+				map("gI", fzf_lua.lsp_implementations, "Goto Implementation")
 
 				-- Jump to the type of the word under your cursor.
 				--  Useful when you're not sure what type a variable is and you want to see
 				--  the definition of its *type*, not where it was *defined*.
-				map("<leader>lD", require("telescope.builtin").lsp_type_definitions, "Type Definition")
+				map("<leader>lD", fzf_lua.lsp_typedefs, "Type Definition")
 
 				-- Fuzzy find all the symbols in your current document.
 				--  Symbols are things like variables, functions, types, etc.
-				map("<leader>ld", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
+				map("<leader>ld", fzf_lua.lsp_document_symbols, "Document Symbols")
 
 				-- Fuzzy find all the symbols in your current workspace
 				--  Similar to document symbols, except searches over your whole project.
-				map("<leader>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
+				map("<leader>lw", fzf_lua.lsp_live_workspace_symbols, "Workspace Symbols")
 
 				-- Rename the variable under your cursor
 				--  Most Language Servers support renaming across files, etc.
 				map("<leader>ln", vim.lsp.buf.rename, "Rename variable")
+
+				-- Show document diagnostics
+				map("<leader>le", fzf_lua.diagnostics_document, "Document Diagnostics")
+				--
+				-- Show workspace diagnostics
+				map("<leader>lE", fzf_lua.diagnostics_workspace, "Workspace Diagnostics")
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.

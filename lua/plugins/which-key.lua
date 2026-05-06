@@ -9,6 +9,7 @@ return {
 			{ "<leader>b", group = "buffer" },
 			{ "<leader>d", group = "dap (debug)" },
 			{ "<leader>t", group = "tab" },
+			{ "<leader>f", group = "file tree" },
 		})
 
 		wk.setup({

@@ -18,6 +18,8 @@ local options = {
 	shiftwidth = 4,
 	tabstop = 4,
 	pumheight = 10,
+	guicursor = "n-v-i-c:block-Cursor",
+	background = 'dark',
 }
 
 local global = {

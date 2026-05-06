@@ -1,58 +1,52 @@
 return {
 	{
-		-- "kvrohit/rasmus.nvim",
-		-- "aktersnurra/no-clown-fiesta.nvim",
-		-- "AlexvZyl/nordic.nvim",
-		-- "bluz71/vim-moonfly-colors",
-		-- "thesimonho/kanagawa-paper.nvim",
-		-- 'datsfilipe/vesper.nvim',
-		-- 'Yazeed1s/oh-lucy.nvim',
-		-- "projekt0n/github-nvim-theme",
-		-- "yazeed1s/minimal.nvim",
-		-- "santos-gabriel-dario/darcula-solid.nvim",
-		-- "vermdeep/darcula_dark.nvim",
-		-- "miikanissi/modus-themes.nvim",
-		-- "killitar/obscure.nvim",
-		-- "wtfox/jellybeans.nvim",
-		"armannikoyan/rusty",
-		-- "p00f/alabaster.nvim",
-		-- "blazkowolf/gruber-darker.nvim",
-		-- "slugbyte/lackluster.nvim",
-		-- "rebelot/kanagawa.nvim",
-		-- "nyoom-engineering/oxocarbon.nvim",
-		-- dependencies = {
-		-- 	"rktjmp/lush.nvim",
-		-- },
+		-- "armannikoyan/rusty",
+		"webhooked/kanso.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
+			-- Default options:
+			-- require('kanso').setup({
+			-- 	bold = true,  -- enable bold fonts
+			-- 	italics = true, -- enable italics
+			-- 	compile = false, -- enable compiling the colorscheme
+			-- 	undercurl = true, -- enable undercurls
+			-- 	commentStyle = { italic = true },
+			-- 	functionStyle = {},
+			-- 	keywordStyle = { italic = true },
+			-- 	statementStyle = {},
+			-- 	typeStyle = {},
+			-- 	transparent = false, -- do not set background color
+			-- 	dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+			-- 	terminalColors = true, -- define vim.g.terminal_color_{0,17}
+			-- 	colors = {         -- add/modify theme and palette colors
+			-- 		palette = {},
+			-- 		theme = {
+			-- 			zen = {},
+			-- 			pearl = {},
+			-- 			ink = {
+			-- 				syn = {
+			-- 					-- parameter = "#8FA6B8"
+			-- 				}
+			-- 			},
+			-- 			all = {}
+			-- 		},
+			-- 	},
+			-- 	overrides = function(colors) -- add/modify highlights
+			-- 		return {}
+			-- 	end,
+			-- 	background = {      -- map the value of 'background' option to a theme
+			-- 		dark = "ink",     -- try "zen", "mist" or "pearl" !
+			-- 		light = "pearl"   -- try "zen", "mist" or "ink" !
+			-- 	},
+			-- 	foreground = "default", -- "default" or "saturated" (can also be a table like background)
+			-- 	minimal = false,    -- reduced color palette for a more minimal look
+			-- })
+
+			-- setup must be called before loading
 			vim.cmd 'set termguicolors'
-			vim.cmd.colorscheme "rusty"
-			vim.cmd [[highlight CursorLine cterm=bold ctermbg=235 guibg=#252930]]
+			vim.cmd("colorscheme kanso-zen")
+			-- vim.cmd [[highlight CursorLine cterm=bold ctermbg=235 guibg=#252930]]
 		end
 	},
-	-- {
-	-- 	"wincent/base16-nvim",
-	-- 	lazy = false,  -- load at start
-	-- 	priority = 1000, -- load first
-	-- 	config = function()
-	-- 		vim.cmd([[colorscheme gruvbox-dark-hard]])
-	-- 		vim.o.background = 'dark'
-	-- 		vim.cmd([[hi Normal ctermbg=NONE]])
-	-- 		-- Less visible window separator
-	-- 		vim.api.nvim_set_hl(0, "WinSeparator", { fg = 1250067 })
-	-- 		-- Make comments more prominent -- they are important.
-	-- 		local bools = vim.api.nvim_get_hl(0, { name = 'Boolean' })
-	-- 		vim.api.nvim_set_hl(0, 'Comment', bools)
-	-- 		-- Make it clearly visible which argument we're at.
-	-- 		local marked = vim.api.nvim_get_hl(0, { name = 'PMenu' })
-	-- 		vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter',
-	-- 			{ fg = marked.fg, bg = marked.bg, ctermfg = marked.ctermfg, ctermbg = marked.ctermbg, bold = true })
-	-- 		-- XXX
-	-- 		-- Would be nice to customize the highlighting of warnings and the like to make
-	-- 		-- them less glaring. But alas
-	-- 		-- https://github.com/nvim-lua/lsp_extensions.nvim/issues/21
-	-- 		-- call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "", "")
-	-- 	end
-	-- },
 }
